@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "bulma": "^0.9.4",
     "date-fns": "^2.30.0",
+    "jest-fetch-mock": "^3.0.3",
     "react": "^18.2.0",
     "react-data-table": "^0.1.0",
     "react-data-table-component": "^7.5.3",
@@ -39,5 +40,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+
   }
 }

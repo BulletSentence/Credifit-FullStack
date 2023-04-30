@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma, transacao, tipo_transacao } from '@prisma/client';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { CreateTransacaoDto } from './dto/create-transacao.dto';
 
 @Injectable()
@@ -8,28 +8,28 @@ export class TransacaoService {
   constructor(private prisma: PrismaService) {}
 
   async create(data: CreateTransacaoDto): Promise<transacao> {
-    const tipoTransacao = await this.prisma.tipo_transacao.findUnique({
-      where: { id: data.tipoId },
-    });
-    if (!tipoTransacao) {
-      throw new Error(`Tipo de transação com id ${data.tipoId} não encontrado`);
-    }
-
-    const transacaoData: Prisma.transacaoCreateInput = {
-      data: data.data,
-      produto: data.produto,
-      valor: data.valor,
-      vendedor: data.vendedor,
-      tipo: { connect: { id: data.tipoId } },
-    };
-
-    return this.prisma.transacao.create({
-      data: transacaoData,
-      include: {
-        tipo: true,
-      },
-    });
+  const tipoTransacao = await this.prisma.tipo_transacao.findUnique({
+    where: { id: data.tipoId },
+  });
+  if (!tipoTransacao) {
+    throw new Error(`Tipo de transação com id ${data.tipoId} não encontrado`);
   }
+
+  const transacaoData: Prisma.transacaoCreateInput = {
+    data: new Date(),
+    produto: data.produto,
+    valor: data.valor,
+    vendedor: data.vendedor,
+    tipo: { connect: { id: data.tipoId } },
+  };
+
+  return this.prisma.transacao.create({
+    data: transacaoData,
+    include: {
+      tipo: true,
+    },
+  });
+}
 
   async findAll(): Promise<transacao[]> {
     return this.prisma.transacao.findMany({

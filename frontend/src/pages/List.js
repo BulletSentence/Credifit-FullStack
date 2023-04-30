@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import DataTable from "react-data-table-component";
 
 const List = () => {
   const [transacoes, setTransacoes] = useState([]);
@@ -12,33 +13,42 @@ const List = () => {
     fetchData();
   }, []);
 
+  const columns = [
+    {
+      name: "ID",
+      selector: "id",
+      sortable: true,
+    },
+    {
+      name: "Data",
+      selector: "data",
+      sortable: true,
+    },
+    {
+      name: "Produto",
+      selector: "produto",
+      sortable: true,
+    },
+    {
+      name: "Valor (Real)",
+      selector: "valor",
+      sortable: true,
+    },
+    {
+      name: "Vendedor",
+      selector: "vendedor",
+      sortable: true,
+    },
+    {
+      name: "Tipo",
+      selector: "tipo.descricao",
+      sortable: true,
+    },
+  ];
+
   return (
-    /* centralizar tabela com a classe do bulma */
-    <div className="is-flex is-justify-content-center">
-      <table className="table mt-6">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Data</th>
-            <th>Produto</th>
-            <th>Valor (Real)</th>
-            <th>Vendedor</th>
-            <th>Tipo</th>
-          </tr>
-        </thead>
-        <tbody>
-          {transacoes.map((transacao) => (
-            <tr key={transacao.id}>
-              <td>{transacao.id}</td>
-              <td>{transacao.data}</td>
-              <td>{transacao.produto}</td>
-              <td>{transacao.valor}</td>
-              <td>{transacao.vendedor}</td>
-              <td>{transacao.tipo.descricao}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="">
+      <DataTable title="Listagem de Transações" columns={columns} data={transacoes} />
     </div>
   );
 };

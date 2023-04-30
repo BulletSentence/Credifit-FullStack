@@ -1,27 +1,23 @@
 /**
- * Envia um conjunto de dados JSON para um endpoint de API via POST.
- *
- * @param {Array} jsonData Um array de objetos JSON a serem enviados.
- */
+Sends a set of JSON data to an API endpoint via POST.
+@param {Array} jsonData An array of JSON objects to be sent.
+*/
+
 export default async function sendData(jsonData) {
-    const apiUrl = "http://localhost:3000/transacao"; // URL do endpoint de API
+  const apiUrl = "http://localhost:3000/transacao";
+  // Iterates over each JSON object in the array and sends it as a POST request to the API
+  for (const transacao of jsonData) {
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(transacao),
+    });
 
-    // Itera sobre cada objeto JSON no array e envia como uma solicitação POST para a API
-    for (const transacao of jsonData) {
-      const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(transacao),
-      });
-
-      // Log do objeto JSON enviado
-      console.log(JSON.stringify(transacao));
-
-      // Verifica se a resposta da API indica um erro e, em caso afirmativo, exibe uma mensagem de erro no console
-      if (!response.ok) {
-        console.error(
-          `Erro ao enviar transação ${transacao.id}: ${response.status} ${response.statusText}`
-        );
-      }
+    // Checks if the API response indicates an error and, if so, displays an error message in the console
+    if (!response.ok) {
+      console.error(
+        `Error sending transaction ${transacao.id}: ${response.status} ${response.statusText}`
+      );
     }
   }
+}

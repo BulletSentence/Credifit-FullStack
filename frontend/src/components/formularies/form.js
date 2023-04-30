@@ -5,32 +5,32 @@ import "../../bulma.css";
 import "./form.css";
 
 function Formulario() {
-  // Define o estado inicial do arquivo como vazio
+  // Define initial state of file as empty string
   const [file, setFile] = useState("");
 
-  // Manipula o evento de alteração de arquivo
+  // Handle file change event
   const handleFileChange = (event) => {
-    // Define o arquivo selecionado como estado atual
+    // Set selected file as current state
     setFile(event.target.files[0]);
   };
 
-  // Manipula o evento de envio do formulário
+  // Handle form submit event
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    // Lê o arquivo selecionado e normaliza os dados
+    // Read selected file and normalize data
     readFile(file).then((text) => {
       normalizeData(text);
-      // Limpa o estado do arquivo
       setFile("");
     });
   };
 
-  // Renderiza o componente do formulário
+  // Render form component
+  // form accept only text files
   return (
     <div>
       <form className="formulario" onSubmit={handleFormSubmit}>
         <label className="custom-file-upload">
-          <input type="file" onChange={handleFileChange} />
+          <input type="file" accept=".txt" onChange={handleFileChange} />
         </label>
         <button type="submit">Enviar Arquivo</button>
       </form>

@@ -1,44 +1,46 @@
 import sendData from "./sendData";
 
 export default function normalizeData(Filedata) {
-  // divide o conteúdo do arquivo por linhas
+  // Split file content by lines
   const lines = Filedata.split("\n");
 
-  // mapeia cada linha para um objeto JSON com as informações da transação
+  // Map each line to a JSON object with transaction information
   const objects = lines.map((line) => {
-    // se a linha estiver vazia, retorna null
+    // If line is empty, return null
     if (line.trim() === "") {
       return null;
     }
-
-    // extrai as informações da linha usando a posição de cada campo
+    // Extract information from line using position of each field
     const tipoId = line.charAt(0).trim();
     const data = line.substring(1, 26).trim();
     const produto = line.substring(26, 56).trim();
     var valor = line.substring(56, 66).trim();
     const vendedor = line.substring(66, 86).trim();
 
-    // transforma o valor em centavos para valor em reais
-    valor = valor.substring(0, valor.length - 2) + "." + valor.substring(valor.length - 2);
+    // Convert value from cents to reais
+    valor =
+      valor.substring(0, valor.length - 2) +
+      "." +
+      valor.substring(valor.length - 2);
 
-    // cria um objeto JSON com as informações da transação
+    // Create a JSON object with transaction information
     var json = { tipoId, data, produto, valor, vendedor };
 
-    // transforma o valor em reais em um número decimal
+    // Convert value in reais to a decimal number
     json.valor = parseFloat(json.valor);
 
-    // transforma o tipoId em um número inteiro
+    // Convert tipoId to an integer number
     json.tipoId = parseInt(json.tipoId);
 
     return json;
   });
 
-  // remove os objetos nulos do array de objetos
+  // Remove null objects from objects array
   const result = objects.filter((obj) => obj !== null);
 
-  // envia os dados para o servidor
+  // Send data to server
   sendData(result);
 
-  // retorna o array de objetos
+  // Return objects array
   return result;
 }

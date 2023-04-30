@@ -15,4 +15,9 @@ export class TransacaoController {
   findAll() {
     return this.transacaoService.findAll();
   }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.transacaoService.findOne(+id);
+  }
 }

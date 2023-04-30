@@ -20,10 +20,11 @@
 }
 
 .formulario button[type="submit"] {
-  background-color: #35287f;
+  background-color: #cc5e00;
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  width: 100%;
 }

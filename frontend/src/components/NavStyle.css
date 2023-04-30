@@ -1,0 +1,28 @@
+.navbar-custom {
+  background-color: #00747e;
+  color: #333;
+}
+
+.custom-btn {
+  background-color: #cc5e00;
+  color: #fff;
+}
+
+.navbar-item-custom {
+  color: #fff;
+}
+
+.active {
+  color: #dea26e;
+  font-weight: 700;
+}
+
+.logo img {
+  max-width: 100px;
+  max-height: 50px;
+}
+
+.logo.image {
+  align-self: center;
+  margin-right: 20px;
+}

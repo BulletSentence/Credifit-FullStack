@@ -1,26 +1,34 @@
 import React, { useState } from "react";
-import { readFile } from "../utils/readfile.js";
-import normalizeData from "../functions/normalize.js";
+import { readFile } from "../../utils/readfile.js";
+import normalizeData from "../../functions/normalize.js";
+import "../../bulma.css";
+import "./form.css";
 
 function Formulario() {
+  // Define o estado inicial do arquivo como vazio
   const [file, setFile] = useState("");
 
+  // Manipula o evento de alteração de arquivo
   const handleFileChange = (event) => {
+    // Define o arquivo selecionado como estado atual
     setFile(event.target.files[0]);
   };
 
+  // Manipula o evento de envio do formulário
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    // Lê o arquivo selecionado e normaliza os dados
     readFile(file).then((text) => {
-      const data = normalizeData(text);
-      console.log(data);
+      normalizeData(text);
+      // Limpa o estado do arquivo
+      setFile("");
     });
   };
 
+  // Renderiza o componente do formulário
   return (
     <div>
       <form className="formulario" onSubmit={handleFormSubmit}>
-        <h2>Arquivo de transações</h2>
         <label className="custom-file-upload">
           <input type="file" onChange={handleFileChange} />
         </label>

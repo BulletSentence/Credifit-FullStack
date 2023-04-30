@@ -26,13 +26,6 @@ cd backend
 npx prisma db seed --preview-feature
 ```
 
-### Iniciando módulo e serviço do prisma
-```bash
-cd backend
-nest g module prisma
-nest g service prisma
-```
-
 ### Iniciando o backend
 ```bash
 cd backend

@@ -20,6 +20,12 @@ cd backend
 npx prisma migrate dev --name init
 ```
 
+### Populando o banco de dados
+```bash
+cd backend
+npx prisma db seed --preview-feature
+```
+
 ### Iniciando módulo e serviço do prisma
 ```bash
 cd backend

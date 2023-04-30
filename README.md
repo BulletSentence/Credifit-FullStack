@@ -8,7 +8,6 @@
 
 
 ## Iniciando Projeto
-
 ### Inicializando o Postgres no docker
 ```bash
 cd backend

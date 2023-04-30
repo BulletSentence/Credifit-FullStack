@@ -7,12 +7,18 @@
 - Typescript
 
 
-## Iniciando Projeto
+## 1 - Iniciando Projeto
 ### Inicializando o Postgres no docker
-```bash
+<details>
+  <summary> Iniciando Projeto</summary>
+  <ol>
+     <code>
+     bash
 cd backend
 docker-compose up -d
-```
+</code>
+  </ol>
+</details>
 
 ### Migrando o banco de dados
 ```bash

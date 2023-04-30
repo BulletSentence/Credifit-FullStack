@@ -11,13 +11,13 @@ datasource db {
 }
 
 model transacao {
-  id      Int       @id @default(autoincrement())
-  data    DateTime  @default(now())
-  produto String?
-  valor   Int?
-  vendedor String?
-  tipo    tipo_transacao @relation(fields: [tipoId], references: [id])
-  tipoId  Int
+  id              Int            @id @default(autoincrement())
+  data            DateTime       @default(now())
+  produto         String?
+  valor           Float?
+  vendedor        String?
+  tipo            tipo_transacao @relation(fields: [tipoId], references: [id])
+  tipoId          Int
 }
 
 model tipo_transacao {

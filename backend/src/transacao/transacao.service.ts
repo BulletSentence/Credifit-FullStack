@@ -1,26 +1,70 @@
 import { Injectable } from '@nestjs/common';
+import { Prisma, transacao, tipo_transacao } from '@prisma/client';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateTransacaoDto } from './dto/create-transacao.dto';
-import { UpdateTransacaoDto } from './dto/update-transacao.dto';
 
 @Injectable()
 export class TransacaoService {
-  create(createTransacaoDto: CreateTransacaoDto) {
-    return 'This action adds a new transacao';
+  constructor(private prisma: PrismaService) {}
+
+  async create(data: CreateTransacaoDto): Promise<transacao> {
+    const tipoTransacao = await this.prisma.tipo_transacao.findUnique({
+      where: { id: data.tipoId },
+    });
+    if (!tipoTransacao) {
+      throw new Error(`Tipo de transação com id ${data.tipoId} não encontrado`);
+    }
+
+    const transacaoData: Prisma.transacaoCreateInput = {
+      data: data.data,
+      produto: data.produto,
+      valor: data.valor,
+      vendedor: data.vendedor,
+      tipo: { connect: { id: data.tipoId } },
+    };
+
+    return this.prisma.transacao.create({
+      data: transacaoData,
+      include: {
+        tipo: true,
+      },
+    });
   }
 
-  findAll() {
-    return `This action returns all transacao`;
+  async findAll(): Promise<transacao[]> {
+    return this.prisma.transacao.findMany({
+      include: {
+        tipo: true,
+      },
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} transacao`;
+  async findOne(id: number): Promise<transacao | null> {
+    return this.prisma.transacao.findUnique({
+      where: { id },
+      include: {
+        tipo: true,
+      },
+    });
   }
 
-  update(id: number, updateTransacaoDto: UpdateTransacaoDto) {
-    return `This action updates a #${id} transacao`;
+  async remove(id: number): Promise<transacao> {
+    return this.prisma.transacao.delete({
+      where: { id },
+      include: {
+        tipo: true,
+      },
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} transacao`;
+  async findTransacoesPorTipo(tipoId: number): Promise<transacao[]> {
+    return this.prisma.transacao.findMany({
+      where: {
+        tipoId,
+      },
+      include: {
+        tipo: true,
+      },
+    });
   }
 }

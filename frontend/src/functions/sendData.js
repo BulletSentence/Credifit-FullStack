@@ -12,12 +12,5 @@ export default async function sendData(jsonData) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(transacao),
     });
-
-    // Checks if the API response indicates an error and, if so, displays an error message in the console
-    if (!response.ok) {
-      console.error(
-        `Error sending transaction ${transacao.id}: ${response.status} ${response.statusText}`
-      );
-    }
   }
 }

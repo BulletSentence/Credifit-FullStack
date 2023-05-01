@@ -62,7 +62,7 @@ Esses são os valores possíveis para o campo Tipo:
 
 
 
-## * Iniciando Projeto
+## * Dependências e Bibliotecas 
 
 <details>
   <summary> 1 - Iniciando o Banco de Dados pelo Docker </summary>
@@ -119,16 +119,63 @@ Esses são os valores possíveis para o campo Tipo:
   </ol>
 </details>
 
-### BIBLIOTECAS E DEPENDENCIAS
-* Prisma
+## * Iniciando Projeto
+
+<details>
+  <summary>  Prisma </summary>
+  <ol>
+  <br>
 > Object-Relational Mapping (ORM)
-* Class-validator 
+  </ol>
+</details>
+
+<details>
+  <summary> Class-validator </summary>
+  <ol>
+  <br>
 > Responsável por validar os dados do modelo ORM
-* react-router-dom 
+  </ol>
+</details>
+
+<details>
+  <summary> react-router-dom  </summary>
+  <ol>
+  <br>
 > Responsável pelo roteamento e escalabilidade
-* date-fns
+  </ol>
+</details>
+
+<details>
+  <summary> date-fns </summary>
+  <ol>
+  <br>
 > Usado na formatação de datas
-* Bulma
+  </ol>
+</details>
+
+<details>
+  <summary> Bulma </summary>
+  <ol>
+  <br>
 > Estilização da Frontend
-* react-data-table
+  </ol>
+</details>
+
+<details>
+  <summary> react-data-table </summary>
+  <ol>
+  <br>
 > Base para a construção da tabela de dados na Frontend
+  </ol>
+</details>
+
+
+<details>
+  <summary> Screenshots </summary>
+  <ol>
+  <br>
+    <img src="https://user-images.githubusercontent.com/37451620/235374649-47884123-2a32-48a3-8bd8-a0107fa12ad3.PNG" width="100%" />
+    <img src="https://user-images.githubusercontent.com/37451620/235374653-8355e921-5961-4665-89b3-0aedbeaa3d9e.PNG" width="100%" />
+  </ol>
+</details>
+

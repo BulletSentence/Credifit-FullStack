@@ -169,6 +169,7 @@ Esses são os valores possíveis para o campo Tipo:
   </ol>
 </details>
 
+## Preview
 
 <details>
   <summary> Screenshots </summary>

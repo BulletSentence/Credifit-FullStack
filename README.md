@@ -68,6 +68,20 @@ Esses são os valores possíveis para o campo Tipo:
 ## * Iniciando Projeto
 
 <details>
+  <summary> 0 - Iniciando o Node </summary>
+  <ol>
+  <br>
+ 
+     cd backend
+     docker-compose up -d
+    
+     cd frontend
+     docker-compose up -d
+    
+  </ol>
+</details>
+
+<details>
   <summary> 1 - Iniciando o Banco de Dados pelo Docker </summary>
   <ol>
   <br>

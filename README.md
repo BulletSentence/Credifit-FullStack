@@ -1,6 +1,8 @@
 # * Fullstack Developer Node/React
 > This is a challenge by Coodesh
 
+* Video: [Video de Apresentação do Challenge](https://www.loom.com/share/24cdfeced2fd480cb4e1602ed098c8d0)
+
 ### Stack:
 - NodeJS
 - ReactJS

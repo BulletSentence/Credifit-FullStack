@@ -109,7 +109,7 @@ Esses são os valores possíveis para o campo Tipo:
   <br>
  
     cd backend
-    npx prisma db seed --preview-feature
+    npm run prisma:seed
 
   </ol>
 </details>

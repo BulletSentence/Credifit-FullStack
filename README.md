@@ -1,4 +1,5 @@
 # * Fullstack Developer Node/React
+> This is a challenge by Coodesh
 
 ### Stack:
 - NodeJS
@@ -11,6 +12,7 @@
 
 ### Documentação de Testes Detalhada (Wiki)
 https://github.com/BulletSentence/Credifit-FullStack/wiki
+
 
 ### Requisitos Funcionais
 

@@ -73,10 +73,10 @@ Esses são os valores possíveis para o campo Tipo:
   <br>
  
      cd backend
-     docker-compose up -d
+     npm install
     
      cd frontend
-     docker-compose up -d
+     npm install
     
   </ol>
 </details>

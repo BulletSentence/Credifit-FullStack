@@ -107,3 +107,28 @@ Esses são os valores possíveis para o campo Tipo:
 
   </ol>
 </details>
+
+<details>
+  <summary> 5 - Iniciando Frontend </summary>
+  <ol>
+  <br>
+ 
+    cd frontend
+    npm run start:dev
+
+  </ol>
+</details>
+
+### BIBLIOTECAS E DEPENDENCIAS
+* Prisma
+> Object-Relational Mapping (ORM)
+* Class-validator 
+> Responsável por validar os dados do modelo ORM
+* react-router-dom 
+> Responsável pelo roteamento e escalabilidade
+* date-fns
+> Usado na formatação de datas
+* Bulma
+> Estilização da Frontend
+* react-data-table
+> Base para a construção da tabela de dados na Frontend

@@ -6,6 +6,9 @@
 - NestJS
 - Typescript
 
+### Documentação de Testes Detalhada (Wiki)
+https://github.com/BulletSentence/Credifit-FullStack/wiki
+
 ### Requisitos Funcionais
 
 Ter uma tela (via formulário) para fazer o upload do arquivo

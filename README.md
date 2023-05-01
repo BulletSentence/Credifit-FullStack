@@ -6,6 +6,9 @@
 - NestJS
 - Typescript
 
+### Banco de Dados
+- PostgreSQL
+
 ### Documentação de Testes Detalhada (Wiki)
 https://github.com/BulletSentence/Credifit-FullStack/wiki
 

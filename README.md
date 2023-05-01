@@ -136,6 +136,20 @@ Esses são os valores possíveis para o campo Tipo:
   </ol>
 </details>
 
+<details>
+  <summary> 6 - Testes </summary>
+  <ol>
+  <br>
+ 
+    cd frontend
+    npm run test
+    
+    cd backend
+    npm run test
+
+  </ol>
+</details>
+
 ## * Dependências e Bibliotecas
 
 <details>
@@ -196,4 +210,6 @@ Esses são os valores possíveis para o campo Tipo:
     <img src="https://user-images.githubusercontent.com/37451620/235374653-8355e921-5961-4665-89b3-0aedbeaa3d9e.PNG" width="100%" />
   </ol>
 </details>
+
+
 

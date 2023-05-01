@@ -58,17 +58,6 @@ Esses são os valores possíveis para o campo Tipo:
 | 3    | Comissão paga     | Saída    | -     |
 | 4    | Comissão recebida | Entrada  | +     |
 
-## * Preview
-<details>
-  <summary> Screenshots </summary>
-  <ol>
-  <br>
-    <img src="https://user-images.githubusercontent.com/37451620/235374649-47884123-2a32-48a3-8bd8-a0107fa12ad3.PNG" width="100%" />
-    <img src="https://user-images.githubusercontent.com/37451620/235374653-8355e921-5961-4665-89b3-0aedbeaa3d9e.PNG" width="100%" />
-  </ol>
-</details>
-
-
 
 ## * Iniciando Projeto
 

@@ -62,7 +62,7 @@ Esses são os valores possíveis para o campo Tipo:
 
 
 
-## * Dependências e Bibliotecas 
+## * Iniciando Projeto
 
 <details>
   <summary> 1 - Iniciando o Banco de Dados pelo Docker </summary>
@@ -119,7 +119,7 @@ Esses são os valores possíveis para o campo Tipo:
   </ol>
 </details>
 
-## * Iniciando Projeto
+## * Dependências e Bibliotecas
 
 <details>
   <summary>  Prisma </summary>

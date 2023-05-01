@@ -8,30 +8,33 @@ export class TransacaoService {
   constructor(private prisma: PrismaService) {}
 
   async create(data: CreateTransacaoDto): Promise<transacao> {
-  const tipoTransacao = await this.prisma.tipo_transacao.findUnique({
-    where: { id: data.tipoId },
-  });
-  if (!tipoTransacao) {
-    throw new Error(`Tipo de transação com id ${data.tipoId} não encontrado`);
+    // Find the type of transaction by its id
+    const tipoTransacao = await this.prisma.tipo_transacao.findUnique({
+      where: { id: data.tipoId },
+    });
+    if (!tipoTransacao) {
+      throw new Error(`Transaction type with id ${data.tipoId} not found`);
+    }
+
+    // Create the transaction with the given data and connect it to its type
+    const transacaoData: Prisma.transacaoCreateInput = {
+      data: data.data,
+      produto: data.produto,
+      valor: data.valor,
+      vendedor: data.vendedor,
+      tipo: { connect: { id: data.tipoId } },
+    };
+
+    return this.prisma.transacao.create({
+      data: transacaoData,
+      include: {
+        tipo: true,
+      },
+    });
   }
 
-  const transacaoData: Prisma.transacaoCreateInput = {
-    data: new Date(),
-    produto: data.produto,
-    valor: data.valor,
-    vendedor: data.vendedor,
-    tipo: { connect: { id: data.tipoId } },
-  };
-
-  return this.prisma.transacao.create({
-    data: transacaoData,
-    include: {
-      tipo: true,
-    },
-  });
-}
-
   async findAll(): Promise<transacao[]> {
+    // Find all transactions and include their type
     return this.prisma.transacao.findMany({
       include: {
         tipo: true,
@@ -40,6 +43,7 @@ export class TransacaoService {
   }
 
   async findOne(id: number): Promise<transacao | null> {
+    // Find a transaction by its id and include its type
     return this.prisma.transacao.findUnique({
       where: { id },
       include: {
@@ -49,6 +53,7 @@ export class TransacaoService {
   }
 
   async remove(id: number): Promise<transacao> {
+    // Remove a transaction by its id and include its type
     return this.prisma.transacao.delete({
       where: { id },
       include: {
@@ -58,6 +63,7 @@ export class TransacaoService {
   }
 
   async findTransacoesPorTipo(tipoId: number): Promise<transacao[]> {
+    // Find all transactions of a given type and include their type
     return this.prisma.transacao.findMany({
       where: {
         tipoId,

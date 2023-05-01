@@ -31,7 +31,7 @@ export default function normalizeData(Filedata) {
 
     // Convert tipoId to an integer number
     json.tipoId = parseInt(json.tipoId);
-
+    console.log(json)
     return json;
   });
 

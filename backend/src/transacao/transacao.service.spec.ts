@@ -55,7 +55,6 @@ describe('TransacaoService', () => {
     });
   });
 
-
   describe('create', () => {
     it('should create a new transacao', async () => {
       const transacaoData = mockTransacao;
@@ -74,7 +73,38 @@ describe('TransacaoService', () => {
       expect(Number.isInteger(createdTransacao.id)).toBe(true);
       expect(Number.isInteger(createdTransacao.valor)).toBe(true);
       expect(Number.isInteger(createdTransacao.tipoId)).toBe(true);
-    }
-    );
+    });
+
+    it('should have a date calculated in the format UTC', async () => {
+      const mockTransacaoDate: transacao = {
+        id: 1,
+        data: new Date("2022-01-15T19:20:30-03:00"),
+        produto: "Curso de Bem-Estar",
+        valor: 100,
+        vendedor: "Maria",
+        tipoId: 1,
+      };
+      const createdTransacao = await service.create(mockTransacaoDate);
+      const expectedDate = "2022-01-15T22:20:30.000-03:00";
+      const expectedTimezoneOffset = "-03:00";
+      const receivedDate = createdTransacao.data.toISOString().replace("Z", expectedTimezoneOffset);
+      expect(receivedDate).toEqual(expectedDate);
+    });
+
+    it('should receive a date in the format NNNNN-NN-NNTNN:NN:NN-NN:NN', async () => {
+      const mockTransacaoDate: transacao = {
+        id: 1,
+        data: new Date("2022-01-15T19:20:30-03:00"),
+        produto: "Curso de Bem-Estar",
+        valor: 100,
+        vendedor: "Maria",
+        tipoId: 1,
+      };
+      const createdTransacao = await service.create(mockTransacaoDate);
+      const expectedDate = /^[\d]{4}-[\d]{2}-[\d]{2}T[\d]{2}:[\d]{2}:[\d]{2}\.[\d]{3}-[\d]{2}:[\d]{2}$/;
+      const receivedDate = createdTransacao.data.toISOString().replace('Z', '-03:00');
+      expect(receivedDate).toMatch(expectedDate);
+    });
   });
 });
+
